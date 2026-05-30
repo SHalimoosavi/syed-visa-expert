@@ -1,6 +1,6 @@
 # SAYANJALI NEXUS - Premium Founder Authority Website
 
-A $10,000+ quality premium founder authority website for Syed Ali Hasan Moosavi, positioned as an International Visa Strategist and European & Arabian Travel Expert.
+A $10,000+ quality premium founder authority website for Syed Ali Hasan Moosavi, positioned as an International Visa Strategist and European & Arabian Travel Expert. 
 
 ## 📋 Table of Contents
 
