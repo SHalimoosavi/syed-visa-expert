@@ -99,23 +99,78 @@ class SayanjaliApp {
      * FAQ Accordion Functionality
      */
     setupFAQ() {
-        this.faqItems.forEach(item => {
+        this.faqItems.forEach((item, index) => {
             const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
             
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all items
-                this.faqItems.forEach(faqItem => {
-                    faqItem.classList.remove('active');
-                });
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
+            if (!question) {
+                console.warn(`FAQ item ${index} missing .faq-question`);
+                return;
+            }
+            
+            // Add cursor pointer
+            question.style.cursor = 'pointer';
+            
+            // Add ARIA attributes for accessibility
+            question.setAttribute('role', 'button');
+            question.setAttribute('tabindex', '0');
+            question.setAttribute('aria-expanded', 'false');
+            
+            // Handle click events
+            question.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggleFAQItem(item, question, index);
+            });
+            
+            // Handle keyboard events (Enter and Space)
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleFAQItem(item, question, index);
+                }
+            });
+            
+            // Add hover effect
+            question.addEventListener('mouseenter', () => {
+                if (!item.classList.contains('active')) {
+                    question.style.background = 'rgba(0, 217, 255, 0.05)';
+                }
+            });
+            
+            question.addEventListener('mouseleave', () => {
+                if (!item.classList.contains('active')) {
+                    question.style.background = '';
                 }
             });
         });
+        
+        console.log(`✅ FAQ setup complete. ${this.faqItems.length} items initialized.`);
+    }
+    
+    /**
+     * Toggle FAQ item open/closed
+     */
+    toggleFAQItem(item, question, index) {
+        const isActive = item.classList.contains('active');
+        
+        if (isActive) {
+            // Close item
+            item.classList.remove('active');
+            question.setAttribute('aria-expanded', 'false');
+            console.log(`FAQ Item ${index + 1} closed`);
+        } else {
+            // Optional: Close all other items for single-open behavior
+            // Uncomment the next 3 lines if you want only one FAQ open at a time
+            // this.faqItems.forEach(faqItem => {
+            //     faqItem.classList.remove('active');
+            // });
+            
+            // Open item
+            item.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+            console.log(`FAQ Item ${index + 1} opened`);
+        }
     }
 
     /**
