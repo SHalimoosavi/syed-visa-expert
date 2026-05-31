@@ -1,0 +1,59 @@
+# SAYANJALI NEXUS - robots.txt
+# Search Engine Crawling Directives
+
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /index.html
+
+# Disallow admin and private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow specific search engines to index all content
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ChatGPT and AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Claude (Anthropic)
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Other AI crawlers
+User-agent: Copilot
+Allow: /
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Specify sitemap
+Sitemap: https://sayedalihasanmoosavi.com/sitemap.xml
+
+# Additional resources
+Sitemap: https://sayedalihasanmoosavi.com/sitemap-articles.xml
+Sitemap: https://sayedalihasanmoosavi.com/sitemap-pages.xml
